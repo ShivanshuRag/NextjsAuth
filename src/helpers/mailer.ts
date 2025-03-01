@@ -2,7 +2,13 @@ import bcrypt from "bcryptjs";
 import nodemailer from 'nodemailer';
 import User from "@/models/usermodel"
 
-export const sendEmail = async({email , emailType , userId}: any)=>{
+interface EmailData {
+    email: string;
+    emailType: "VERIFY" | "RESET";
+    userId: string; 
+}
+
+export const sendEmail = async({email , emailType , userId}: EmailData)=>{
    try {
     
     const hashedToken = await bcrypt.hash(userId.toString() ,10);
@@ -23,8 +29,8 @@ export const sendEmail = async({email , emailType , userId}: any)=>{
         host: "sandbox.smtp.mailtrap.io",
         port: 2525,
         auth: {
-          user: "3fd364695517df",
-          pass: "7383d58fd399cf"
+          user: "e6199a0bca6320",
+          pass: "f359aa00ef2592"
           //TODO: add these credentials to .env file
         }
       });
@@ -42,8 +48,8 @@ export const sendEmail = async({email , emailType , userId}: any)=>{
     (mailOptions);
     return mailresponse;
 
-   } catch (error: any) {
-    throw new Error(error.message);
+   } catch (error:unknown) {
+    throw new Error((error as Error).message);
    }
 
 }
