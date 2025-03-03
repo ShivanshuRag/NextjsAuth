@@ -6,8 +6,8 @@ import User from "@/models/usermodel"
 connect()
 export async function GET(request: NextRequest){
   try {
-     const userId = getDataFromToken(request);
-    const user = User.findOne({_id: userId}).select("-password");
+     const userId = await getDataFromToken(request);
+    const user = await User.findOne({_id: userId}).select("-password");
 
     return NextResponse.json({
         message : "User Found",

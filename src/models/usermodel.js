@@ -21,6 +21,10 @@ import mongoose from 'mongoose';
         require: [true," please enter a password"]
        
     },
+    isVerfied: {
+      type: Boolean,
+      default: false,
+    },
     isAdmin:{
         type: Boolean,
         default:false
