@@ -1,4 +1,4 @@
-
+"use client"
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
@@ -12,7 +12,7 @@ export default function VerifyEmailPage(){
 
  const emailVerify = async ()=>{
      try {
-        axios.post("/api/users/verifyemail" ,  {token})
+        await axios.post("/api/users/verifyemail" ,  {token})
         setVerified(true)
      } catch (error) {
         if(error instanceof Error){
@@ -23,7 +23,7 @@ export default function VerifyEmailPage(){
  }
 
    useEffect(()=>{
-     const urlToken = window.location.search.split("=")[1]
+    const urlToken = window.location.search.split("=")[1];
      setToken(urlToken || "")
    },[]);
 

@@ -36,6 +36,6 @@ import mongoose from 'mongoose';
 
  })
 
- const User = mongoose.models.users || mongoose.model("users" , userSchema);
+ const User = mongoose.models.authusers || mongoose.model("authusers" , userSchema);
 
  export default User
