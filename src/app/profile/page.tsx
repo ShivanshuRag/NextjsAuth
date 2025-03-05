@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import toast from "react-hot-toast";
+import {toast} from "react-hot-toast";
 import axios from "axios";
 
 export default function ProfilePage(){
@@ -15,10 +15,10 @@ export default function ProfilePage(){
 const logout = async ()=>{
     try {
 
-      const res =  await axios.get("/api/users/logout");
-         if(res.data){
-            toast.success(" Logout Successful");
-         }
+        await axios.get("/api/users/logout");
+         
+         toast.success(" Logout Successful");
+         
         router.push("/login")
     } catch (error) {
         if( error instanceof Error){
