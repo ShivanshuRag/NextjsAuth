@@ -23,7 +23,7 @@ export default function Login (){
 
      try {
          setLoading(true)
-         const res = await axios.post("/api/user/login" , user)
+         const res = await axios.post("/api/users/login" , user)
          console.log( " login Success",res.data);
          router.push("/profile")
      } catch (error:unknown) {
@@ -48,11 +48,11 @@ export default function Login (){
     return(
      <div className="flex flex-col items-center justify-center min-h-screen py-2">
         
-      <h1>{ loading ? "process" : "Login" }</h1>
+      <h1>{ loading ? "processing" : "Login" }</h1>
        <hr />
        <label htmlFor="email">email</label>
        <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-white"
 
         id="email"
         type="email" 
@@ -62,7 +62,7 @@ export default function Login (){
        />
         <label htmlFor="password">password</label>
         <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-white"
             id="password"
             type="password"
             value={user.password}
@@ -77,7 +77,7 @@ export default function Login (){
 
            { buttonDisabled ? "No Login" : "Login"}
             </button>
-            <Link href="/login">visit signup page</Link>
+            <Link href="/signup">visit signup page</Link>
        
      </div>
 
